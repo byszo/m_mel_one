@@ -74,7 +74,7 @@ public class Review {
 	
 	
 	public void setLanguage (String language) {
-		if (language == null && language == "") {
+		if (language == null || language == "") {
 			System.out.println("Fehler");
 			return;
 		}

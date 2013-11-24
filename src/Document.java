@@ -62,7 +62,7 @@ public class Document {
 	 * @param title
 	 */
 	public void setTitle (String title) {
-		if (title == null && title == ""){
+		if (title == null || title == "") {
 			System.out.println("Fehler");
 			return;
 		}
@@ -74,7 +74,7 @@ public class Document {
 	 * @param language
 	 */
 	public void setLanguage (String language) {
-		if (language == null && language == "") {
+		if (language == null || language == "") {
 			System.out.println("Fehler");
 			return;
 		}
@@ -86,7 +86,7 @@ public class Document {
 	 * @param description
 	 */
 	public void setDescription (String description) {
-		if (description == null && description.length() < 1000 && description == "") {
+		if (description != null && description.length() < 1000) {
 			System.out.println("Die Beschreibung ist zu kurz.");
 			return;
 		}
@@ -242,14 +242,19 @@ public class Document {
 	 * @param n
 	 * @return
 	 */
-	private static boolean suffixEqual (String word1, String word2, int n) {
-		if (!(n > word1.length() && n> word2.length())) {
-			for (int i=0; i<n; i++){	
-				if (!(word1.charAt(word1.length()-1-i)==word2.charAt(word2.length()-1-i))) return false;
-			}
-			return true;
+	private static boolean suffixEqual (String word1, String word2, int n) {		
+		if ( word1.length() < n ||  word2.length() < n ) {
+			return false;
 		}
-		else return false;
+			
+		String sufixOne = word1.substring(word1.length() - n);
+		String sufixTwo = word2.substring(word2.length() - n);
+			
+		if (sufixOne.equals(sufixTwo)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -260,8 +265,8 @@ public class Document {
 	private static String findSuffix(String word) {
 		String suffix = "";
 		for (int i=0; i<SUFFICES.length; i++) {
-			if (suffixEqual(SUFFICES[i],word,SUFFICES[i].length())== true) {
-				SUFFICES[i] = suffix;
+			if (suffixEqual(SUFFICES[i],word,SUFFICES[i].length()) == true) {
+				suffix = SUFFICES[i];
 			}
 		}
 		return suffix;
@@ -271,7 +276,7 @@ public class Document {
 	private static String cutSuffix (String word,String suffix) {
 		if (suffixEqual(suffix,word,suffix.length())) {
 			String tmp = "";
-			for (int i= 0; i < (word.length() - suffix.length()-1); i++) {
+			for (int i= 0; i < (word.length() - suffix.length()); i++) {
 				tmp += word.charAt(i);
 			}
 			return tmp;
@@ -284,10 +289,10 @@ public class Document {
 		String [] tmp = tokenize(text);
 		// mistake probably here 
 		wordCounts=new WordCountArray(tmp.length);
-		for (int i=0; i<tmp.length-1; i++) {
+		for (int i=0; i<tmp.length; i++) {
 			wordCounts.add(cutSuffix(tmp[i],findSuffix(tmp[i])), 1);
 		}
-			}
+	}
 
 
 	public Document (String title, String language, String description, Date releaseDate, 

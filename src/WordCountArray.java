@@ -13,7 +13,7 @@ public class WordCountArray {
 	
 	public void add(String word, int count) {
 		if (word.equals("")) return;
-		if (wordCounts.length<=count) return;
+		
 		WordCount a = new WordCount(word, count);
 		for (int i = 0; i < wordCounts.length; i++) {
 			if (wordCounts[i] == null) {

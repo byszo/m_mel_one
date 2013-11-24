@@ -57,7 +57,7 @@ public class Author {
 	 * Das Attribut "firstName" soll auf einen gegebenen Wert gesetzt werden. 
 	 */
 	public void setFirstName(String firstName) {
-		if (firstName == null && firstName == "") {
+		if (firstName == null || firstName == "") {
 			System.out.println("Fehler");
 			return;
 		}
@@ -69,7 +69,7 @@ public class Author {
 	 * @param lastName
 	 */
 	public void setLastName(String lastName) {
-		if (lastName == null && lastName == "") {
+		if (lastName == null || lastName == "") {
 			System.out.println("Fehler");
 			return;
 		}
@@ -87,7 +87,7 @@ public class Author {
 	
 	
 	public void setResidence (String residence) {
-		if (residence == null && residence == "") {
+		if (residence == null || residence == "") {
 			System.out.println("Fehler");
 			return;
 		}
@@ -96,7 +96,7 @@ public class Author {
 	
 	
 	public void setEmail (String email) {
-		if (email == null && email == "") {
+		if (email == null || email == "") {
 			System.out.println("Fehler");
 			return;
 		}
