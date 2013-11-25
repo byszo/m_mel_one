@@ -9,12 +9,9 @@ public class Test {
 		Author author =  new Author("Christian", "Ullenboom", new Date(1,11,1989), "Berlin", "christian.ulleboom@gmail.de");
 		
 		Document document = new Document(title, language, description, releaseDate, author);
-		
 
 		WordCount b = new WordCount("Java", 6);
 		System.out.println(b.incrementCount());
 		System.out.println(b.incrementCount(3));
-	
-		return;
 	}
 }
