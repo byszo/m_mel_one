@@ -15,8 +15,5 @@ public class Test {
 		System.out.println(b.incrementCount());
 		System.out.println(b.incrementCount(3));
 		
-		
-		
-		
 	}
 }
