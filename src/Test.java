@@ -14,6 +14,7 @@ public class Test {
 		WordCount b = new WordCount("Java", 6);
 		System.out.println(b.incrementCount());
 		System.out.println(b.incrementCount(3));
-		
+	
+		return;
 	}
 }
